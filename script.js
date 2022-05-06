@@ -1,19 +1,51 @@
 // pegando todos valores do formulario de uma vez
 let fields = document.querySelectorAll("#form-user-create [name]");
+// criando uma Variavel que armazena um JSON
 let user = {};
 
+function addLine(dataUser) {
 
-fields.forEach(function (field, index) {
+    let tr = document.createElement("tr");
 
-    if (field.name == "gender") {
+    tr.innerHTML = ` 
+    <tr>
+        <td><img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm" /></td>
+    <td>${dataUser.name}</td>
+    <td>${dataUser.email}</td>
+    <td>${dataUser.admin}</td>
+    <td>${dataUser.birth}</td>
+    <td>
+      <button type="button" class="btn btn-primary btn-xs btn-flat">Editar</button>
+      <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
+    </td>
+  </tr>
+  `;
 
-        if (field.checked) {
+    document.getElementById('table-users').appendChild(tr);
+
+    console.log('addline', dataUser)
+}
+
+// Evento Para receber os dados ao clicar no button submit
+document.getElementById('form-user-create').addEventListener("submit", function (event) {
+
+    // Cancela o comando padrao que o evento teria
+    event.preventDefault();
+
+    fields.forEach(function (field, index) {
+        if (field.name == "gender") {
+            if (field.checked) {
+                // Enviando para variavel um JSON o campo e oque esta escrito 
+                user[field.name] = field.value;
+            }
+        } else {
             user[field.name] = field.value;
-        }
+        };
+    });
 
-    } else {
-        user[field.name] = field.value
-    }
+
+    addLine(user)
+
 });
 
-console.log(user);
+
