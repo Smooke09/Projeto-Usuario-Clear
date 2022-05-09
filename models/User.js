@@ -2,7 +2,6 @@ class User {
 
     constructor(name, gender, birth, country, email, password, photo, admin) {
 
-        // Atributo chamando name;
         this._name = name;
         this._gender = gender;
         this._birth = birth;
@@ -12,8 +11,8 @@ class User {
         this._photo = photo;
         this._admin = admin;
         this._register = new Date();
-    }
 
+    }
 
     get register() {
         return this._register;
@@ -21,41 +20,34 @@ class User {
 
     get name() {
         return this._name;
-    };
-
+    }
 
     get gender() {
-        return this._gender
-    };
-    get birth() {
-        return this._birth
-    };
+        return this._gender;
+    }
 
     get country() {
         return this._country;
-    };
+    }
 
     get email() {
         return this._email;
-    };
+    }
 
     get password() {
         return this._password;
-    };
+    }
 
     get photo() {
         return this._photo;
-    };
-
+    }
 
     get admin() {
         return this._admin;
-    };
-
+    }
 
     set photo(value) {
         this._photo = value;
     }
-
 
 }
